@@ -1,0 +1,23 @@
+{
+  "name": "iMMob",
+  "version": "1.0.0",
+  "description": "iMMob",
+  "main": "index.js",
+  "scripts": {
+    "dev": "browser-refresh server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iSaklov",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^5.13.3",
+    "mongoose-slug-updater": "^3.3.0",
+    "node-sass-middleware": "^0.11.0",
+    "pug": "^3.0.2"
+  }
+}

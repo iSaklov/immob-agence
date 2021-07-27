@@ -1,0 +1,18 @@
+$color-chart: #fcff49;
+// $btn-link-color: ;
+// $btn-link-hover-color: ;
+
+body {
+    background-color: $color-chart;
+}
+
+nav {
+    img {
+        color: $color-chart;
+        width: 100px;
+    }
+    button {
+        // color: $color-chart !important;
+        // border-color: $color-chart !important;
+    }
+}
