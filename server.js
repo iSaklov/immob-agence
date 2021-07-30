@@ -24,16 +24,16 @@ app.use(session({
 const flash = require('express-flash-messages');
 app.use(flash());
 
-//--------------------------------------------------------------------
-//      Fausse connection
-//--------------------------------------------------------------------
-app.use((req, res, next) => {
-    req.session.user = {
-        firstname : 'Add',
-        lastname : 'Min'
-    };
-    next();
-});
+// //--------------------------------------------------------------------
+// //      Fausse connection
+// //--------------------------------------------------------------------
+// app.use((req, res, next) => {
+//     req.session.user = {
+//         firstname : 'Add',
+//         lastname : 'Min'
+//     };
+//     next();
+// });
 
 //--------------------------------------------------------------------
 //     Gestionnaire des sessions

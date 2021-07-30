@@ -15,6 +15,7 @@ module.exports = class Home {
                     });
                 }
             }
+            console.log(realties);
             response.render('home', {realties});
         });
     }
