@@ -4,9 +4,8 @@ block content
     section
         each realty, key in realties
             article.card.m-5(style="width: 18rem;")
-                if realty.images.length > 0                    
-	            //- img(src='/images/realties/'+realty._id+'/'+realty.images[0])
-                img.card-img-top(src='/images/realties/'+realty._id+'/'+realty.images[0] alt="...")
+                if realty.images.length > 0
+                    img.card-img-top(src='/images/products/'+realty._id+'/'+realty.images[0] alt="...")
                 .card-body
                     case realty.type
                         when '1'
