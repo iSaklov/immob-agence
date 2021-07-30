@@ -18,24 +18,23 @@ module.exports = class RealtyRepository {
             })
         })
 	}
-
+    
 	delete(filter = {}) {
         return new Promise((resolve, reject) => {
             this.db.deleteOne(filter, function (err) {
-                console.log(err);
                 if (err) reject(err);
                 resolve();
-            });
+            })
         })
-	};
+	}
 
 	find(search = {}) {
         return new Promise((resolve, reject) => {
             this.db.find(search, function (err, realty) {
                 if (err) reject(err);
                 resolve(realty);
-            });
-        });
+            })
+        })
     }
 
 	findById(id) {
@@ -43,7 +42,16 @@ module.exports = class RealtyRepository {
             this.db.findById(id, function (err, realty) {
                 if (err || realty === null) reject();
                 resolve(realty);
-            });
-        });
+            })
+        })
+    }
+
+    update(filter = {}, realty) {
+        return new Promise((resolve, reject) => {
+            this.db.updateOne(filter, realty, function (err, realty) {
+                if (err) reject(err);
+                resolve(realty);
+            })
+        })
     }
 }

@@ -1,4 +1,33 @@
 extends layout.pug
 
 block content
-	div Hello world 3 !!!
+    section
+        each realty, key in realties
+            article.card.m-5(style="width: 18rem;")
+                if realty.images.length > 0                    
+	            //- img(src='/images/realties/'+realty._id+'/'+realty.images[0])
+                img.card-img-top(src='/images/realties/'+realty._id+'/'+realty.images[0] alt="...")
+                .card-body
+                    case realty.type
+                        when '1'
+                            h5.card-title Maison #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                            - break
+                        when '2'
+                            h5.card-title Appartement #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                            - break
+                        when '3'
+                            h5.card-title Terrain #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                            - break
+                        when '4'
+                            h5.card-title Parking #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                            - break
+                        when '5'
+                            h5.card-title Local / Bureau #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                            - break
+                        default
+                            h5.card-title Autre #{realty.area}m<sup>2</sup> - #{realty.room} piece(s)
+                    
+                    p.card-text #{realty.info_realty}
+                    p.card-text #{realty.price}€
+                    a.btn.btn-primary Plus d'infos
+            

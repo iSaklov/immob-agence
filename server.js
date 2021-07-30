@@ -24,23 +24,26 @@ app.use(session({
 const flash = require('express-flash-messages');
 app.use(flash());
 
-// //--------------------------------------------------------------------
-// //      Ignore d'absence de connection
-// //--------------------------------------------------------------------
-// app.use((req, res, next) => {
-//     req.session.user = {
-//         firstname : 'Toto',
-//     };
-//     next();
-// });
-
 //--------------------------------------------------------------------
-//      Connection à la session
+//      Fausse connection
 //--------------------------------------------------------------------
-app.use(function(req, res, next) {
-    res.locals.session = req.session;
+app.use((req, res, next) => {
+    req.session.user = {
+        firstname : 'Add',
+        lastname : 'Min'
+    };
     next();
 });
+
+//--------------------------------------------------------------------
+//     Gestionnaire des sessions
+//--------------------------------------------------------------------
+app.use((req,res,next) => {
+    res.locals.session = req.session;
+    res.locals.route = req._parsedUrl.pathname;
+    next();
+});
+
 //--------------------------------------------------------------------
 //      Traitement des données du formulaire 
 //--------------------------------------------------------------------
@@ -58,14 +61,6 @@ app.use(sassMiddleware({
     indentedSyntax: false, // true Compiles files with the .sass extension
     outputStyle: 'compressed'
 }));
-//--------------------------------------------------------------------
-//     Gestionnaire des sessions
-//--------------------------------------------------------------------
-app.use((req,res,next) => {
-    res.locals.session = req.session;
-    res.locals.route = req._parsedUrl.pathname;
-    next();
-});
 
 //--------------------------------------------------------------------
 //     Chargement de bodyParser

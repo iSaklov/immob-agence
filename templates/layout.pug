@@ -17,7 +17,8 @@ html(lang="fr")
             nav.navbar.navbar-dark.bg-dark.navbar-expand-lg.sticky-top.p-3
                 
                 a.navbar-brand(href="/")
-                    img(src='/img/logo.svg')
+                    object(type="image/svg+xml" data="/img/logo.svg" width="100px")
+                        img(src="/img/logo.png" alt="logo Développeur full-stack" class="d-inline-block align-text-top")
                 button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
                     span.navbar-toggler-icon
 
@@ -33,7 +34,7 @@ html(lang="fr")
                                 a.nav-link(href='/connexion') Connexion
                     form.d-flex
                         input(class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search")
-                        button(class="btn btn-outline-success" type="submit") Search
+                        button(class="btn btn-outline-warning" type="submit") Search
 
     block content
 

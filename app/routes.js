@@ -1,3 +1,5 @@
+const { request } = require('express');
+
 module.exports = (app) => {
     app.get('/', (req, res) => {
 		let Home = require('../src/controllers/Home.js');
@@ -29,6 +31,16 @@ module.exports = (app) => {
       (new Authenticated()).disconnect(req, res);
     });
 
+    app.use('/admin', (request, response, next) => {
+      if(typeof request.session === 'undefined' || typeof request.session.user === 'undefined') {
+        request.flash('error', `Vous devez être connecté pour accéder à l'administration.`);
+        request.session.riderect = request.url;
+        response.redirect('/connexion');  
+      } else {
+        next();
+      }
+    });
+
     app.get('/admin', (req, res) => {
     let Dashboard = require('../src/controllers/Dashboard.js');
     (new Dashboard()).print(req, res);
@@ -44,22 +56,29 @@ module.exports = (app) => {
         (new Realty()).printForm(req, res);
     });
 
-    app.post('/admin/realty/add', (req, res) => {
-        let Realty = require('../src/controllers/Realty.js');
-        (new Realty()).processForm(req, res);
+    app.post('/admin/realty/add', 
+      require('express-fileupload')({createParentPath: true}),
+      require('../src/services/LcParserService.js'), 
+      (req, res) => {
+          let Realty = require('../src/controllers/Realty.js');
+          (new Realty()).processForm(req, res);
     });
 
-        app.get('/admin/realty/edit/:id', (req, res) => {
-        let Realty = require('../src/controllers/Realty.js');
-        (new Realty()).printForm(req, res);
-    });
-
-
-        app.get('/admin/realty/delete/:id', (req, res) => {
+    app.get('/admin/realty/delete/:id', (req, res) => {
         let Realty = require('../src/controllers/Realty.js');
         (new Realty()).delete(req, res);
     });
 
+    app.get('/admin/realty/edit/:id', (req, res) => {
+        let Realty = require('../src/controllers/Realty.js');
+        (new Realty()).printForm(req, res);
+    });
 
-
+    app.post('/admin/realty/edit/:id',
+        require('express-fileupload')({createParentPath: true}),
+        require('../src/services/LcParserService.js'),
+        (req, res) => {
+        let Realty = require('../src/controllers/Realty.js');
+        (new Realty()).processForm(req, res);
+    });
 }

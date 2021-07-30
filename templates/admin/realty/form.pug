@@ -13,8 +13,7 @@ block content
         .btn-toolbar.mb-2.mb-md-0
             a.btn.btn-small.btn-secondary(href="/admin/realty") Liste des biens
     .row
-        //- enctype="multipart/form-data"
-        form(role="form"  method="post")
+        form(role="form" enctype="multipart/form-data" method="post")
             //- !csrf
             .row
                 .col-xs-12.col-lg-6 
@@ -92,14 +91,14 @@ block content
                         
                                     .form-group
                                         label Commision
-                                        input.form-control(name="realty[amount_commission]" value= form.amount_commission type="number" placeholder="Montant de commission")
+                                        input.form-control(name="realty[amount_commission]" value= form.amount_commission type="number" step="0.01" placeholder="Montant de commission")
                                     .form-group
-                                        input.form-control(name="realty[percentage_commission]" value= form.percentage_commission type="number" placeholder="% de commission")
+                                        input.form-control(name="realty[percentage_commission]" value= form.percentage_commission type="number" step="0.01" placeholder="% de commission")
                             .col-xs-12.col-lg-6  
                                 .row                 
                                     .lcUpload__block
                                         .lcUpload__input
-                                            input.lcUpload__file(type="file" name="photos" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple)
+                                            input.lcUpload__file(type="file" name="images" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple)
                                             label(for="file")
                                                 strong Choisissez le fichier
                                                 span.lcUpload__dragndrop  ou glissez le ici
@@ -130,4 +129,4 @@ block content
                     button.btn.btn-primary.center-block(type="submit")= (route.indexOf('/admin/realty/edit') != -1  ? 'Modifier' : 'Enregistrer' ) 
 
     block scripts 
-    script(src="/js/upload.js") 
+    script(src="/js/admin/upload.js") 

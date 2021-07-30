@@ -1,0 +1,14 @@
+body {
+  background-color: #fcff49;
+}
+
+nav img {
+  color: #fcff49;
+  width: 100px;
+}
+
+nav button.btn-outline-warning {
+  color: #fcff49 !important;
+  border-color: #fcff49 !important;
+}
+/*# sourceMappingURL=style.css.map */

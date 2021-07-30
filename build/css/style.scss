@@ -7,12 +7,8 @@ body {
 }
 
 nav {
-    img {
-        color: $color-chart;
-        width: 100px;
-    }
-    button {
-        // color: $color-chart !important;
-        // border-color: $color-chart !important;
+    button.btn-outline-warning {
+        color: $color-chart !important;
+        border-color: $color-chart !important;
     }
 }

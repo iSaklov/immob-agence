@@ -24,7 +24,7 @@ module.exports = mongoose.Schema({
     type : {type: String, match: /^[1-6]{1}$/},
 	price : { type: Number, match: /^[0-9]{1,}$/},
 	amout_commission : { type: Number, match: /^[0-9]{1,}$/},
-	percentage_commission : { type: Number, match: /^[0-9]{1,}$/},
+	percentage_commission : { type: Number, match: /^[0-9]+[\,\.]?[0-9]$/},
     area : { type: Number, match: /^[0-9]{1,}$/},
     room : {type: Number, match: /^[0-9]{1,2}$/},
 	type_product : {type: String, match: /^[1-3]{1}$/},
